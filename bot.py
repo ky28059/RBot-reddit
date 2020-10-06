@@ -17,7 +17,6 @@ def bot_login():
 
 
 def run_bot(bot, replied):
-    replied = list(replied)
     print("Searching last 1,000 comments")
 
     for comment in bot.subreddit('Bot_testing_facility').comments(limit=1000):
@@ -48,6 +47,7 @@ def get_saved_comments():
             replied = f.read()
             replied = replied.split("\n")
             replied = filter(None, replied)
+            replied = list(replied)  # necessary for Python 3
 
     return replied
 
